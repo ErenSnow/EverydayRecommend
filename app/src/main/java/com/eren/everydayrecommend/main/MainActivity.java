@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-
 import com.eren.everydayrecommend.R;
 import com.eren.everydayrecommend.common.Constant;
 import com.eren.everydayrecommend.home.HomeFragment;
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
      * 初始化Toolbar信息
      */
     private void initToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -100,11 +99,11 @@ public class MainActivity extends AppCompatActivity {
      * 初始化控件
      */
     private void initView() {
-        mBottomNavigation = findViewById(R.id.navigation);
-        mVpMain = findViewById(R.id.vp_main);
+        mBottomNavigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mVpMain = (ViewPager) findViewById(R.id.vp_main);
         mBottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        mDrawer = findViewById(R.id.drawlayout);
-        mRvDrawList = findViewById(R.id.recyclerview_drawerlist);
+        mDrawer = (DrawerLayout) findViewById(R.id.drawlayout);
+        mRvDrawList = (RecyclerView) findViewById(R.id.recyclerview_drawerlist);
         mDrawer.setScrimColor(Color.TRANSPARENT);
         mDrawer.setDrawerElevation(0);
     }
@@ -232,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 侧边栏的设置集合
+     *
      * @return
      */
     private List<DrawModel> initData() {

@@ -34,7 +34,7 @@ public class GuideActivity extends AppCompatActivity {
         //去除状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_guide);
-        mTvTime = findViewById(R.id.tv_guide_time);
+        mTvTime = (TextView) findViewById(R.id.tv_guide_time);
         mTvTime.setText(max + " s");
         Observable.timer(1, TimeUnit.SECONDS)
                 .repeat(3)
