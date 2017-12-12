@@ -36,6 +36,7 @@ public class GuideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guide);
         mTvTime = (TextView) findViewById(R.id.tv_guide_time);
         mTvTime.setText(max + " s");
+        //向导页面倒计时
         Observable.timer(1, TimeUnit.SECONDS)
                 .repeat(3)
                 .observeOn(AndroidSchedulers.mainThread())

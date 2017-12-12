@@ -14,7 +14,8 @@ import com.eren.everydayrecommend.home.model.DrawModel;
 import java.util.List;
 
 /**
- * 侧滑菜单栏适配器
+ * 作者：Leon
+ * 描述:
  */
 public class MainDrawListAdapter extends RecyclerView.Adapter<MainDrawListAdapter.MainViewHolder> {
 
@@ -72,9 +73,9 @@ public class MainDrawListAdapter extends RecyclerView.Adapter<MainDrawListAdapte
 
         public MainViewHolder(View itemView) {
             super(itemView);
-            relativeLayout = itemView.findViewById(R.id.layout_main);
-            imageView = itemView.findViewById(R.id.iv_icon);
-            textView = itemView.findViewById(R.id.tv_info);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.layout_main);
+            imageView = (ImageView) itemView.findViewById(R.id.iv_icon);
+            textView = (TextView) itemView.findViewById(R.id.tv_info);
         }
     }
 }
