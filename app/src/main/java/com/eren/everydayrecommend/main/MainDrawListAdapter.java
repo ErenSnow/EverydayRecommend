@@ -14,8 +14,7 @@ import com.eren.everydayrecommend.home.model.DrawModel;
 import java.util.List;
 
 /**
- * 作者：Leon
- * 描述:
+ *
  */
 public class MainDrawListAdapter extends RecyclerView.Adapter<MainDrawListAdapter.MainViewHolder> {
 

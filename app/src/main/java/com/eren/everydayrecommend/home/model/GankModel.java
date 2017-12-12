@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 作者：Leon
- * 描述:
+ * Home界面模型
  */
 public class GankModel {
 
@@ -34,7 +33,7 @@ public class GankModel {
         return results;
     }
 
-    public static class ResultsEntity implements Serializable{
+    public static class ResultsEntity implements Serializable {
         public ResultsEntity() {
         }
 

@@ -11,7 +11,7 @@ import com.eren.everydayrecommend.R;
 
 
 /**
- * 我的界面
+ * Me界面
  */
 public class MeFragment extends Fragment {
 

@@ -1,8 +1,7 @@
 package com.eren.everydayrecommend.home.model;
 
 /**
- * 作者：Leon
- * 描述:
+ * 侧滑菜单模型
  */
 public class DrawModel {
 

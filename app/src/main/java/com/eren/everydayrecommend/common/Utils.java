@@ -6,8 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 作者：Leon
- * 描述:
+ * 工具类
  */
 public class Utils {
 

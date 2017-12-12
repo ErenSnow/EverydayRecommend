@@ -1,8 +1,7 @@
 package com.eren.everydayrecommend.common;
 
 /**
- * 作者：Leon
- * 描述:
+ * 常量
  */
 public class Constant {
     public static String BASE_URL = "http://gank.io/api/";

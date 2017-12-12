@@ -34,8 +34,7 @@ import io.reactivex.schedulers.Schedulers;
 import static com.blankj.utilcode.util.NetworkUtils.isConnected;
 
 /**
- * 作者：Leon
- * 描述:
+ * Home界面
  */
 public class HomeFragment extends Fragment implements HomeContract.View {
     protected Activity mContext;

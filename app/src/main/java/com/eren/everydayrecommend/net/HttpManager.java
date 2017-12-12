@@ -12,8 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * 作者：Leon
- * 描述: 网络请求管理器
+ * 网络请求管理器
  */
 public class HttpManager {
     private static HttpManager httpManager;
@@ -49,8 +48,8 @@ public class HttpManager {
 
     /**
      * 获取对应的接口服务
-     * @param baseUrl 指定URL地址
      *
+     * @param baseUrl 指定URL地址
      * @return Api
      */
     public Api getApiService(String baseUrl) {

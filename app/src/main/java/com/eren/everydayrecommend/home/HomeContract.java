@@ -1,8 +1,7 @@
 package com.eren.everydayrecommend.home;
 
 /**
- * @author Leon
- * @date
+ * Home界面契约接口
  */
 
 public interface HomeContract {

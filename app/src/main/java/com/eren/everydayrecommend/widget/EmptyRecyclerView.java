@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * 作者：Leon
+ * 重写RecyclerView显示空布局
  */
 public class EmptyRecyclerView extends RecyclerView {
     private View mEmptyView;

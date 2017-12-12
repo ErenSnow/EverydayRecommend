@@ -18,8 +18,7 @@ import com.eren.everydayrecommend.image.ImageManager;
 import java.util.List;
 
 /**
- * 作者：Leon
- * 描述:
+ * Home界面适配器
  */
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private Context mContext;
