@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eren.everydayrecommend.R;
@@ -25,6 +26,7 @@ import com.eren.everydayrecommend.home.model.DrawModel;
 import com.eren.everydayrecommend.me.MeFragment;
 import com.eren.everydayrecommend.read.ReadFragment;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,6 +95,35 @@ public class MainActivity extends AppCompatActivity {
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //通过反射获取主标题控件，添加单机事件
+        try {
+            Field field = toolbar.getClass().getDeclaredField("mTitleTextView");
+            field.setAccessible(true);
+            TextView textView = (TextView) field.get(toolbar);
+            textView.setClickable(true);
+            textView.setOnClickListener(new View.OnClickListener() {
+                long firstTime = 0;
+
+                @Override
+                public void onClick(View v) {
+                    //第一次按压的时间
+                    long pressTime = System.currentTimeMillis();
+                    //比较两次时间差
+                    if (pressTime - firstTime > 500) {
+                        firstTime = pressTime;
+                        return;
+                    }
+                    //处理双击事件，让列表回滚到顶端
+                    if (mVpMain.getCurrentItem() == 0) {
+                        HomeFragment homeFragment = (HomeFragment) mList.get(0);
+                        //HomeFragment homeFragment = new HomeFragment();  不能够直接调用，Fragment中的坑
+                        homeFragment.scrollToTop();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

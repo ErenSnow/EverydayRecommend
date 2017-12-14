@@ -182,6 +182,13 @@ public class HomeFragment extends Fragment implements HomeContract.View {
     }
 
     /**
+     * 让列表回滚到顶端
+     */
+    public void scrollToTop() {
+        mRecyclerView.smoothScrollToPosition(0);
+    }
+
+    /**
      * 开启加载中动画
      */
     @Override

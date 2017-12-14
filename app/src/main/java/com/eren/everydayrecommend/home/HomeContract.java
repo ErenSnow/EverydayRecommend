@@ -22,7 +22,7 @@ public interface HomeContract {
         //开启加载更多
         void startLoadingMore();
 
-        //开启加载更多
+        //关闭加载更多
         void stopLoadingMore();
     }
 }
