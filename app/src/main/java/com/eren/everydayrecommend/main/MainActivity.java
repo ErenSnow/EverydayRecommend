@@ -1,5 +1,6 @@
 package com.eren.everydayrecommend.main;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.eren.everydayrecommend.common.Constant;
 import com.eren.everydayrecommend.home.HomeFragment;
 import com.eren.everydayrecommend.home.model.DrawModel;
 import com.eren.everydayrecommend.me.MeFragment;
+import com.eren.everydayrecommend.othercategory.OtherCategoryActivity;
 import com.eren.everydayrecommend.read.ReadFragment;
 
 import java.lang.reflect.Field;
@@ -159,35 +161,35 @@ public class MainActivity extends AppCompatActivity {
         mDrawListAdapter.setmOnMainDrawClickListener(new MainDrawListAdapter.OnMainDrawClickListener() {
             @Override
             public void onClick(int position) {
-                String categroy = Constant.CATEGORY_ALL;
+                String category = Constant.CATEGORY_ALL;
                 switch (mListDrawModel.get(position).getTitle()) {
                     case "iOS":
-                        categroy = Constant.CATEGORY_IOS;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGORY_IOS;
+                        showCategoryInfo(category);
                         break;
                     case "前端":
-                        categroy = Constant.CATEGORY_CLIENT;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGORY_CLIENT;
+                        showCategoryInfo(category);
                         break;
                     case "瞎推荐":
-                        categroy = Constant.CATEGROY_RECOMMEND;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGROY_RECOMMEND;
+                        showCategoryInfo(category);
                         break;
                     case "App":
-                        categroy = Constant.CATEGORY_APP;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGORY_APP;
+                        showCategoryInfo(category);
                         break;
                     case "拓展资源":
-                        categroy = Constant.CATEGORY_EXPANDRESOURCE;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGORY_EXPANDRESOURCE;
+                        showCategoryInfo(category);
                         break;
                     case "休息视频":
-                        categroy = Constant.CATEGORY_VIDEO;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGORY_VIDEO;
+                        showCategoryInfo(category);
                         break;
                     case "福利":
-                        categroy = Constant.CATEGORY_GIRL;
-                        showCategoryInfo(categroy);
+                        category = Constant.CATEGORY_GIRL;
+                        showCategoryInfo(category);
                         break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
@@ -293,10 +295,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 跳转到分类展示界面
      *
-     * @param categroy
+     * @param category
      */
-    private void showCategoryInfo(String categroy) {
-        Toast.makeText(this, "跳转分类：" + categroy, Toast.LENGTH_SHORT).show();
+    private void showCategoryInfo(String category) {
+        Intent intent = new Intent(this, OtherCategoryActivity.class);
+        intent.putExtra("category",category);
+        startActivity(intent);
     }
 
 

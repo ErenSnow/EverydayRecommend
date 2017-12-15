@@ -25,6 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.MainActivity" />
+        <activity android:name=".base.BaseActivity" />
+        <activity android:name=".othercategory.OtherCategoryActivity" />
+        <activity android:name=".detail.DetailActivity" />
     </application>
 
 </manifest>

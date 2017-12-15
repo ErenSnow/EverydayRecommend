@@ -1,12 +1,11 @@
-package com.eren.everydayrecommend.home;
+package com.eren.everydayrecommend.base;
 
 /**
- * Home界面契约接口
+ * Created by smartOrange_5 on 2017/12/14.
  */
 
-public interface HomeContract {
+public interface BaseView {
 
-    interface View {
         //开启加载动画
         void showLoading();
 
@@ -25,4 +24,3 @@ public interface HomeContract {
         //关闭加载更多
         void stopLoadingMore();
     }
-}

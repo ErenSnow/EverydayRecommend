@@ -1,4 +1,4 @@
-package com.eren.everydayrecommend.home;
+package com.eren.everydayrecommend.base;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +18,9 @@ import com.eren.everydayrecommend.image.ImageManager;
 import java.util.List;
 
 /**
- * Home界面适配器
+ * 适配器基类
  */
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
+public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
     private Context mContext;
     private List<GankModel.ResultsEntity> mListData;
     private OnBaseClickListener mBaseClickListener;
@@ -34,7 +34,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         void onCoverClick(int position, GankModel.ResultsEntity entity);
     }
 
-    public HomeAdapter(Context mContext, List<GankModel.ResultsEntity> mListData) {
+    public BaseAdapter(Context mContext, List<GankModel.ResultsEntity> mListData) {
         this.mContext = mContext;
         this.mListData = mListData;
     }
