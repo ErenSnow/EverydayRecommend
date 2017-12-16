@@ -80,12 +80,12 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initOptions(view);
         initView(view);
         //设置布局类型
-        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(initLayoutManager());
         //创建适配器
-        mBaseAdapter = new BaseAdapter(mContext, mList);
+        mBaseAdapter = new BaseAdapter(mContext, mList, initItemType());
         mRecyclerView.setAdapter(mBaseAdapter);
         //设置空布局展示
         mRecyclerView.setmEmptyView(mEmptyView);
@@ -99,7 +99,34 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         }
     }
 
-    protected void initItemListener(){
+    /**
+     * 实现各自的业务操作，由子类实现
+     * @param view
+     */
+    protected  void initOptions(View view){
+
+    }
+
+    /**
+     * 初始化列表的LayoutManager，默认提供线性LinearLayoutManager
+     * 如果有其他布局，由子类实现
+     *
+     * @return
+     */
+    protected RecyclerView.LayoutManager initLayoutManager() {
+        return new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+    }
+
+    /**
+     * 初始化单个条目的布局类型
+     *
+     * @return
+     */
+    protected int initItemType() {
+        return Constant.ITEM_TYPE_TEXT;
+    }
+
+    protected void initItemListener() {
 
     }
 

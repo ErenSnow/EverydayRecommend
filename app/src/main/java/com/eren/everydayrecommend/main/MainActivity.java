@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.eren.everydayrecommend.R;
 import com.eren.everydayrecommend.common.Constant;
+import com.eren.everydayrecommend.girl.GirlActivity;
 import com.eren.everydayrecommend.home.HomeFragment;
 import com.eren.everydayrecommend.home.model.DrawModel;
 import com.eren.everydayrecommend.me.MeFragment;
@@ -59,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initHome() {
+        initNavigation();   //在初始化布局之前完成
         initView();
         initToolbar();
-        initNavigation();
         initFragment();
         initViewPager();
         initRecycler();
@@ -188,8 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         showCategoryInfo(category);
                         break;
                     case "福利":
-                        category = Constant.CATEGORY_GIRL;
-                        showCategoryInfo(category);
+                        startActivity(new Intent(MainActivity.this, GirlActivity.class));
                         break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void showCategoryInfo(String category) {
         Intent intent = new Intent(this, OtherCategoryActivity.class);
-        intent.putExtra("category",category);
+        intent.putExtra("category", category);
         startActivity(intent);
     }
 
