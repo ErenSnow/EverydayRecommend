@@ -1,5 +1,6 @@
 package com.eren.everydayrecommend.detail;
 
+
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,16 +16,26 @@ import com.eren.everydayrecommend.R;
 import com.eren.everydayrecommend.base.BaseActivity;
 import com.eren.everydayrecommend.home.model.GankModel;
 
+
+/**
+ * 详情界面
+ */
 public class DetailActivity extends BaseActivity {
     private View mView;
     private WebView mWebView;
     private String mUrl;
+    private boolean mIsFromMe;
 
     @Override
     protected void initOptions() {
         mWebView = (WebView) mView.findViewById(R.id.webview);
-        GankModel.ResultsEntity resultsBean = (GankModel.ResultsEntity) getIntent().getSerializableExtra("entity");
-        mUrl = resultsBean.getUrl();
+        mIsFromMe = getIntent().getBooleanExtra("isfromme", false);
+        if (mIsFromMe) {
+            mUrl = getIntent().getStringExtra("url");
+        } else {
+            GankModel.ResultsEntity resultsBean = (GankModel.ResultsEntity) getIntent().getSerializableExtra("entity");
+            mUrl = resultsBean.getUrl();
+        }
         startLoading();
         if (StringUtils.isEmpty(mUrl)) {
             ToastUtils.showShort("网络地址加载有误，请稍后再试");
@@ -34,6 +45,7 @@ public class DetailActivity extends BaseActivity {
         initWebView();
         mWebView.loadUrl(mUrl);
     }
+
     /**
      * webview相关参数设置
      */
@@ -95,10 +107,12 @@ public class DetailActivity extends BaseActivity {
     protected String initToolbarTitle() {
         return "详情查看";
     }
+
     @Override
     protected void updateOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_download).setVisible(false);
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
@@ -107,6 +121,7 @@ public class DetailActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     @Override
     protected void onResume() {
         super.onResume();

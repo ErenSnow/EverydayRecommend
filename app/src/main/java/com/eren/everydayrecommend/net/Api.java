@@ -1,6 +1,7 @@
 package com.eren.everydayrecommend.net;
 
 import com.eren.everydayrecommend.home.model.GankModel;
+import com.eren.everydayrecommend.read.model.ReadModel;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -27,5 +28,16 @@ public interface Api {
                                           @Path("pageSize") int pageSize,
                                           @Path("page") int page);
 
-    
+    /**
+     * Read数据
+     *
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @GET("api/v1/info/{page}/{pageSize}")
+    Observable<ReadModel> getReadData(@Path("page") int page,
+                                      @Path("pageSize") int pageSize);
+
+
 }

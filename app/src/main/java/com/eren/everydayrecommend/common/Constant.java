@@ -6,6 +6,7 @@ package com.eren.everydayrecommend.common;
 public class Constant {
     public static String BASE_URL = "http://gank.io/api/";
     public static String BASE_URL_READ = "";
+    public static final String BASE_URL_Read = " https://easy-mock.com/mock/59af9501e0dc6633419eadec/leon/";
 
     public static String CATEGORY_ALL = "all";
     public static String CATEGORY_Android = "Android";
