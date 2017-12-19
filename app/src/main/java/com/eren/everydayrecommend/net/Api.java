@@ -39,5 +39,15 @@ public interface Api {
     Observable<ReadModel> getReadData(@Path("page") int page,
                                       @Path("pageSize") int pageSize);
 
+    /**
+     * 搜索数据
+     *
+     * @param searchkeyword
+     * @param page
+     * @return
+     */
+    @GET("search/query/{searchkeyword}/category/all/count/10/page/{page} ")
+    Observable<GankModel> getSearchData(@Path("searchkeyword") String searchkeyword,
+                                        @Path("page") int page);
 
 }

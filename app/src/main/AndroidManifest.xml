@@ -29,7 +29,8 @@
         <activity android:name=".othercategory.OtherCategoryActivity" />
         <activity android:name=".detail.DetailActivity" />
         <activity android:name=".girl.GirlActivity" />
-        <activity android:name=".showpic.ShowPicActivity"></activity>
+        <activity android:name=".showpic.ShowPicActivity" />
+        <activity android:name=".search.SearchActivity" />
     </application>
 
 </manifest>

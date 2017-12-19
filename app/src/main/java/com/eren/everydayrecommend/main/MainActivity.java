@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eren.everydayrecommend.R;
 import com.eren.everydayrecommend.common.Constant;
@@ -28,6 +27,7 @@ import com.eren.everydayrecommend.home.model.DrawModel;
 import com.eren.everydayrecommend.me.MeFragment;
 import com.eren.everydayrecommend.othercategory.OtherCategoryActivity;
 import com.eren.everydayrecommend.read.ReadFragment;
+import com.eren.everydayrecommend.search.SearchActivity;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, SearchActivity.class));
         return true;
     }
 

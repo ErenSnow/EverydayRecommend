@@ -6,21 +6,33 @@ package com.eren.everydayrecommend.base;
 
 public interface BaseView {
 
-        //开启加载动画
-        void showLoading();
+    /**
+     * 开启加载动画
+     */
+    void showLoading();
 
-        //关闭加载动画
-        void hideLoading();
+    /**
+     * 关闭加载动画
+     */
+    void hideLoading();
 
-        //开启下拉刷新
-        //void startRefush();
+    /**
+     * 开启下拉刷新
+     */
+    //void startRefush();
 
-        //关闭下拉刷新
-        void stopRefresh();
+    /**
+     * 关闭下拉刷新
+     */
+    void stopRefresh();
 
-        //开启加载更多
-        void startLoadingMore();
+    /**
+     * 开启加载更多
+     */
+    void startLoadingMore();
 
-        //关闭加载更多
-        void stopLoadingMore();
-    }
+    /**
+     * 关闭加载更多
+     */
+    void stopLoadingMore();
+}
