@@ -1,19 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:leon="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
-        android:id="@+id/tv_nonetwork"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:enabled="true"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="Me"
-        android:textColor="@color/primary_text"
-        android:textSize="18sp"/>
+        android:background="@color/white"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
 
-</RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="完美的孙瑜小公举"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/me_bg"/>
+        </FrameLayout>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-70dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="50dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/me_head"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
+    </android.support.v7.widget.CardView>
+
+        <com.leon.lib.settingview.LSettingItem
+            android:id="@+id/setting_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            leon:isShowRightText="true"
+            leon:isShowUnderLine="false"
+            leon:leftIcon="@drawable/me_icon_version"
+            leon:leftText="版本号"
+            leon:leftTextMarginLeft="16dp"
+            leon:rightText="V1.0"
+            leon:rightTextColor="#999999"/>
+
+        <com.leon.lib.settingview.LSettingItem
+            android:id="@+id/setting_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:isShowUnderLine="false"
+            leon:leftIcon="@drawable/me_icon_save"
+            leon:leftText="已收藏"
+            leon:leftTextMarginLeft="16dp"
+            leon:rightText="V1.0"
+            leon:rightTextColor="#999999"/>
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:isShowUnderLine="false"
+            leon:leftIcon="@drawable/me_icon_video"
+            leon:leftText="优质视频分享"
+            leon:leftTextMarginLeft="16dp"
+            leon:rightStyle="iconHide"
+            leon:rightText="V1.0"
+            leon:rightTextColor="#999999"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/me_list_vedio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

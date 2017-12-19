@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.eren.everydayrecommend.R;
@@ -37,12 +36,11 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ReadFragment extends Fragment {
     public View mView;
-    private Context mContex;
+    private Context mContext;
     private EmptyRecyclerView mRecyclerView;
     private ReadAdapter mReadAdapter;
     private List<ReadModel.NewslistEntity> mReadList;
     private Disposable mDisposable;
-    private TextView mTvNoNetwork;
     private View mEmptyView;
     private SwipeRefreshLayout mRefreshLayout;
     private AVLoadingIndicatorView mAvi;
@@ -54,7 +52,7 @@ public class ReadFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.mContex = context;
+        this.mContext = context;
     }
 
     @Nullable
@@ -68,9 +66,9 @@ public class ReadFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContex, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         mReadList = new ArrayList<>();
-        mReadAdapter = new ReadAdapter(mContex, mReadList);
+        mReadAdapter = new ReadAdapter(mContext, mReadList);
         mRecyclerView.setAdapter(mReadAdapter);
         mRecyclerView.setmEmptyView(mEmptyView);
         mRecyclerView.hideEmptyView();
@@ -85,7 +83,6 @@ public class ReadFragment extends Fragment {
         mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refreshlayout);
         mAvi = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
         mAviLoadMore = (AVLoadingIndicatorView) view.findViewById(R.id.avi_loadmore);
-        mTvNoNetwork = (TextView) view.findViewById(R.id.tv_nonetwork);
         mLayoutLoadMore = (LinearLayout) view.findViewById(R.id.layout_loadmore);
         //设置下拉刷新样式
         mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -42,5 +43,7 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.1.3'
     compile 'com.github.clans:fab:1.6.4'
     compile 'com.google.android:flexbox:0.2.6'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.leon:lsettingviewlibrary:1.5.0'
     testCompile 'junit:junit:4.12'
 }
