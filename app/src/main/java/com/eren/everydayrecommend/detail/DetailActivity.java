@@ -1,6 +1,7 @@
 package com.eren.everydayrecommend.detail;
 
 
+import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +15,10 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.eren.everydayrecommend.R;
 import com.eren.everydayrecommend.base.BaseActivity;
+import com.eren.everydayrecommend.db.DbManager;
+import com.eren.everydayrecommend.db.SaveModel;
 import com.eren.everydayrecommend.home.model.GankModel;
+import com.eren.everydayrecommend.main.MainActivity;
 
 
 /**
@@ -25,6 +29,9 @@ public class DetailActivity extends BaseActivity {
     private WebView mWebView;
     private String mUrl;
     private boolean mIsFromMe;
+    private SaveModel mSaveModel;
+    private String imageTemp = "";
+    GankModel.ResultsEntity resultsBean;
 
     @Override
     protected void initOptions() {
@@ -33,8 +40,16 @@ public class DetailActivity extends BaseActivity {
         if (mIsFromMe) {
             mUrl = getIntent().getStringExtra("url");
         } else {
-            GankModel.ResultsEntity resultsBean = (GankModel.ResultsEntity) getIntent().getSerializableExtra("entity");
+            resultsBean = (GankModel.ResultsEntity) getIntent().getSerializableExtra("entity");
+            mSaveModel = (SaveModel) DbManager.getInstence().queryModel(SaveModel.class, resultsBean.get_id());
             mUrl = resultsBean.getUrl();
+
+            if (resultsBean.getImages() != null && resultsBean.getImages().size() > 0) {
+                imageTemp = resultsBean.getImages().get(0);
+            }
+            if (mSaveModel == null) {
+                initSaveModel(resultsBean, imageTemp);
+            }
         }
         startLoading();
         if (StringUtils.isEmpty(mUrl)) {
@@ -47,7 +62,7 @@ public class DetailActivity extends BaseActivity {
     }
 
     /**
-     * webview相关参数设置
+     * WebView相关参数设置
      */
     private void initWebView() {
         WebSettings webSettings = mWebView.getSettings();
@@ -97,6 +112,13 @@ public class DetailActivity extends BaseActivity {
         });
     }
 
+    public void initSaveModel(GankModel.ResultsEntity resultsBean, String imageTemp) {
+        mSaveModel = new SaveModel(resultsBean.get_id(), resultsBean.getCreatedAt(),
+                resultsBean.getDesc(), resultsBean.getPublishedAt(), resultsBean.getSource(),
+                resultsBean.getType(), resultsBean.getUrl(), resultsBean.getUsed(), (String) resultsBean.getWho(),
+                imageTemp, false);
+    }
+
     @Override
     protected View initContentView() {
         mView = View.inflate(this, R.layout.activity_detail, null);
@@ -110,7 +132,13 @@ public class DetailActivity extends BaseActivity {
 
     @Override
     protected void updateOptionsMenu(Menu menu) {
+        if (mSaveModel != null && mSaveModel.isCollection()) {
+            menu.findItem(R.id.action_save).setIcon(R.drawable.menu_action_save_choosen);
+        }
         menu.findItem(R.id.action_download).setVisible(false);
+        if (mIsFromMe) {
+            menu.findItem(R.id.action_save).setVisible(false);
+        }
     }
 
     @Override
@@ -149,6 +177,24 @@ public class DetailActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.action_share:
                 startShareIntent("text/plain", "分享一片有用的文章:" + mUrl);
+                break;
+
+            case R.id.action_save:
+                if (!mSaveModel.isCollection()) {
+                    initSaveModel(resultsBean, imageTemp);
+                    //进行收藏保存
+                    mSaveModel.setCollection(true);
+                    DbManager.getInstence().save(mSaveModel);
+                    ToastUtils.showShort("收藏成功");
+                    item.setIcon(R.drawable.menu_action_save_choosen);
+                } else {
+                    //取消收藏
+                    DbManager.getInstence().cancelSave(SaveModel.class, mSaveModel.get_id());
+                    ToastUtils.showShort("取消收藏");
+                    item.setIcon(R.drawable.menu_action_save);
+                    finish();
+                    startActivity(new Intent(DetailActivity.this, MainActivity.class));
+                }
                 break;
         }
 

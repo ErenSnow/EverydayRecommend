@@ -1,6 +1,7 @@
 package com.eren.everydayrecommend.me;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.eren.everydayrecommend.R;
+import com.eren.everydayrecommend.collect.CollectActivity;
 import com.eren.everydayrecommend.me.model.VideoModel;
 import com.leon.lib.settingview.LSettingItem;
 
@@ -81,7 +83,7 @@ public class MeFragment extends Fragment {
         mLSettingItemSave.setmOnLSettingItemClick(new LSettingItem.OnLSettingItemClick() {
             @Override
             public void click(boolean isChecked) {
-                //startActivity(new Intent(mContext, CollectActivity.class));
+                startActivity(new Intent(mContext, CollectActivity.class));
             }
         });
     }
