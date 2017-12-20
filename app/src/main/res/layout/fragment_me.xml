@@ -28,7 +28,7 @@
                 android:elevation="6dp"
                 android:gravity="center"
                 android:padding="16dp"
-                android:text="完美的孙瑜小公举"
+                android:text="Eren"
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
 
